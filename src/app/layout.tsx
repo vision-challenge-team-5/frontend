@@ -32,10 +32,10 @@ export default function RootLayout({
         {/* 네비게이션 바 */}
         <nav className="bg-gray-100 px-20">
           <div className="flex justify-around">  
-            <Link href="/" className="p-10 text-lg">홈</Link>
-            <Link href="/monitor" className="p-10 text-lg">모니터링</Link>
-            <Link href="/analysis" className="p-10 text-lg">분석 및 통계</Link>
-            <Link href="/setting" className="p-10 text-lg">설정</Link>
+            <Link href="/" className="p-7">홈</Link>
+            <Link href="/monitor" className="p-7">모니터링</Link>
+            <Link href="/analysis" className="p-7">분석 및 통계</Link>
+            <Link href="/setting" className="p-7">설정</Link>
           </div>
         </nav>
         
