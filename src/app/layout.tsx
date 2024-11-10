@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Link from "next/link";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -28,6 +29,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* 네비게이션 바 */}
+        <nav className="bg-gray-100 px-20">
+          <div className="flex justify-around">  
+            <Link href="/" className="p-10 text-lg">홈</Link>
+            <Link href="/monitor" className="p-10 text-lg">모니터링</Link>
+            <Link href="/analysis" className="p-10 text-lg">분석 및 통계</Link>
+            <Link href="/setting" className="p-10 text-lg">설정</Link>
+          </div>
+        </nav>
+        
         {children}
       </body>
     </html>
