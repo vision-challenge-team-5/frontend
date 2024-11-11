@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Image from "next/image";
 import Link from "next/link";
 import "./globals.css";
 
@@ -30,12 +31,18 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {/* 네비게이션 바 */}
-        <nav className="bg-gray-100 px-20">
-          <div className="flex justify-around">  
-            <Link href="/" className="p-7">홈</Link>
-            <Link href="/monitor" className="p-7">모니터링</Link>
-            <Link href="/analysis" className="p-7">분석 및 통계</Link>
-            <Link href="/setting" className="p-7">설정</Link>
+        <nav className="bg-white-green px-20">
+          <div className="flex justify-evenly">
+            <Link href="/">
+            <Image src='/logo.png' alt="로고" width='80' height='20' className="py-2"></Image>
+            </Link>
+            <div className="flex justify-around"> 
+              <Link href="/" className="mr-20 p-7 text-sm text-deep-green">홈</Link>
+              <Link href="/monitor" className="mr-20 p-7 text-sm text-deep-green">모니터링</Link>
+              <Link href="/analysis" className="mr-20 p-7 text-sm text-deep-green">분석 및 통계</Link>
+              <Link href="/setting" className="mr-20 p-7 text-sm text-deep-green">설정</Link>
+            </div>
+            
           </div>
         </nav>
         
