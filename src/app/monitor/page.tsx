@@ -45,7 +45,7 @@ export default function Monitor() {
                         
                     ) : (
                         // 기본 화면
-                        <div className="flex justify-center items-center flex-col space-y-4 w-full h-full">
+                        <div className="flex justify-center items-center flex-col space-y-6 w-full h-full">
                             <ChooseFunc 
                                 srcS='/camera.png' 
                                 altS='카메라' 
