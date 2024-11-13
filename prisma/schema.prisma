@@ -1,0 +1,21 @@
+// src/prisma/schema.prisma
+
+datasource db {
+  provider = "mysql"  // MySQL 사용
+  url      = env("DATABASE_URL") // 환경 변수로 연결 URL 지정
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model ImageDetection {
+  id         Int     @id @default(autoincrement()) // Auto-increment primary key
+  imageUrl   String  // 이미지 URL
+  x1         Decimal // x1 좌표
+  x2         Decimal // x2 좌표
+  y1         Decimal // y1 좌표
+  y2         Decimal // y2 좌표
+  confidence Decimal // Confidence 값
+  label      String  // 라벨
+}
