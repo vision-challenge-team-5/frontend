@@ -15,7 +15,7 @@ export default function numberlist({ titleS, valueS, onChange }: NumberListProps
         <div className="m-8">
             <div className="inline-block font-bold mb-2 text-sm w-[90px] text-right">{titleS}</div>
             <select 
-                className="inline w-[250px] border-gray border-b-2 items-center text-sm focus:bg-white-green ml-5 pl-2 pt-0.5 pb-0.5"
+                className="inline w-[250px] border-gray border-b-2 items-center text-sm focus:bg-white-green focus:outline-none ml-5 pl-2 pt-0.5 pb-0.5"
                 value={valueS} 
                 onChange={handleChange}
             >

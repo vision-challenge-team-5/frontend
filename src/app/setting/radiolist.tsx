@@ -14,17 +14,17 @@ export default function radiolist({ titleS, valueS, onChange }: RadioListProps )
     return (
         <div className="m-8">
             <div className="inline-block font-bold mb-2 text-sm w-[90px] text-right">{titleS}</div>
-            <label className="ml-7">
+            <label className="ml-7 accent-light-green">
                 <input 
                     type="radio" 
                     name={titleS}
                     value="yes" 
                     checked={valueS === 'yes'} 
-                    onChange={handleChange} 
+                    onChange={handleChange}
                 />
                 예
             </label>
-            <label>
+            <label className="accent-light-green">
                 <input 
                     type="radio" 
                     name={titleS}
