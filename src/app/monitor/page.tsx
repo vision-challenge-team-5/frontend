@@ -31,7 +31,7 @@ export default function Monitor() {
 
     return (
         <div>
-            <div className="pt-10"></div>
+            <div className="pt-32"></div>
             <div className="pr-[15vw] pl-[15vw]">
                 <div className="flex justify-center relative">
                     <div className="bg-black w-[850px] h-[550px]">

@@ -35,7 +35,7 @@ export default function Setting() {
 
     return (
         <div>
-            <div className="pt-10"></div>
+            <div className="pt-32"></div>
             <div className="pr-[15vw] pl-[15vw]">
 
                 {/* 사용자 설정 */}
