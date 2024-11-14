@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import Image from "next/image";
-import Link from "next/link";
 import "./globals.css";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "./app-sidebar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,30 +30,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* 네비게이션 바 */}
-        <nav className="bg-white-green px-20 fixed top-0 left-0 w-full z-50 opacity-90">
-          
-          <div className="flex justify-center block lg:hidden">
-            <Link href="/">
-              <Image src='/logo.png' alt="로고" width='80' height='20' className="py-3"></Image>
-            </Link>
-          </div>
-          
-          <div className="flex justify-evenly hidden lg:flex">
-            <Link href="/">
-              <Image src='/logo.png' alt="로고" width='80' height='20' className="py-3"></Image>
-            </Link>
-            <div className="flex justify-around"> 
-              <Link href="/" className="mr-20 p-7 text-base text-deep-green font-bold transition-all hover:text-white duration-300">홈</Link>
-              <Link href="/monitor" className="mr-20 p-7 text-base text-deep-green font-bold transition-all hover:text-white duration-300">모니터링</Link>
-              <Link href="/analysis" className="mr-20 p-7 text-base text-deep-green font-bold transition-all hover:text-white duration-300">분석 및 통계</Link>
-              <Link href="/setting" className="mr-20 p-7 text-base text-deep-green font-bold transition-all hover:text-white duration-300">설정</Link>
+        <SidebarProvider>
+          <div className="relative min-h-screen">
+            <div className="fixed top-0 left-0 z-50">
+              <AppSidebar />
             </div>
-            
+            <main className="w-full min-h-screen">{children}</main>
           </div>
-        </nav>
-        
-        {children}
+        </SidebarProvider>
       </body>
     </html>
   );
