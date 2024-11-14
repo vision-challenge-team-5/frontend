@@ -1,8 +1,6 @@
 "use server";
 import { NextResponse } from "next/server";
-import axios from "axios";
 import prisma from "@/lib/prisma";
-import { Decimal } from "@prisma/client/runtime/library";
 import s3Util from "../../utils/s3";
 import detectorService from "./service/detector";
 import Formatter from "./service/formatter";
