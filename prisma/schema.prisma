@@ -10,12 +10,13 @@ generator client {
 }
 
 model ImageDetection {
-  id         Int     @id @default(autoincrement()) // Auto-increment primary key
-  imageUrl   String  // 이미지 URL
-  x1         Decimal // x1 좌표
-  x2         Decimal // x2 좌표
-  y1         Decimal // y1 좌표
-  y2         Decimal // y2 좌표
-  confidence Decimal // Confidence 값
-  label      String  // 라벨
+  id         Int      @id @default(autoincrement())
+  imageUrl   String  
+  x1         Decimal 
+  x2         Decimal 
+  y1         Decimal  
+  y2         Decimal  
+  confidence Decimal  
+  label      String   
+  createdAt  DateTime @default(now()) 
 }
