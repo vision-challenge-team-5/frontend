@@ -86,3 +86,8 @@ body {
     @apply bg-background text-foreground w-auto h-auto;
   }
 }
+
+:root {
+  --swiper-navigation-color: #fff;
+  --swiper-pagination-color: #fff;
+}
