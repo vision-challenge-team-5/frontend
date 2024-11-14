@@ -19,7 +19,7 @@ export default function Home() {
     }, []); // 컴포넌트가 처음 렌더링될 때 한 번만 실행
 
     return (
-        <div>
+        <div className="w-screen overflow-x-hidden">
             <div className="relative w-full md:h96">
                 <Image src="/solar-panels.png" alt="태양광패널" width={2580} height={1402} sizes="100vw" />
                 <div className="absolute transform -translate-y-3/4 w-full h-[500px] bg-[linear-gradient(to_bottom,_rgba(80,_98,_58,_0)_20%,_rgba(80,_98,_58,_1)_60%)]">
@@ -33,10 +33,10 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="bg-olive-green h-[2000px] pr-[5vw] pl-[5vw]">
+            <div className="bg-olive-green h-[2000px]">
                 <div className="relative pt-[360px]"></div>
                 <div className="relative pb-[50px] text-white-green text-7xl font-extrabold text-center">solAR cleAR란?</div>
-                <div className="relative absolute">
+                <div className="relative">
                     <Carousel />
                 </div>
             </div>

@@ -35,12 +35,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${songMyung.className} antialiased`}
       >
-        <SidebarProvider className="block">
+        <SidebarProvider className="block" defaultOpen={false}>
           <div className="relative h-screen">
             <div className="fixed top-0 left-0 z-50">
               <AppSidebar />
             </div>
-            <main className="">{children}</main>
+            <main>{children}</main>
           </div>
         </SidebarProvider>
       </body>
