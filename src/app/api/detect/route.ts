@@ -1,26 +1,37 @@
-"use server";
-import { NextResponse } from "next/server";
+// app/api/detect/route.ts
+
+import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import s3Util from "../../utils/s3";
 import detectorService from "./service/detector";
 import Formatter from "./service/formatter";
 
-/**
- * @description AI 사용
- */
+export const config = {
+    api: {
+        bodyParser: false, // Disable Next.js automatic body parsing
+    },
+};
 
-// Main handler function
-export async function POST(req: Request) {
+// POST request handler
+export async function POST(req: NextRequest) {
     try {
-        const { imageUrl, confidence = "0.5", nmsThreshold = "0.3" } = await req.json();
+        const formData = await req.formData();
 
-        if (!imageUrl) {
-            throw new Error("Image URL is required");
+        // Extract fields
+        const imageFile = formData.get("imageFile") as File;
+        const confidence = formData.get("confidence") as string;
+        const nmsThreshold = formData.get("nmsThreshold") as string;
+
+        if (!imageFile) {
+            return NextResponse.json({ message: "Image file is required" }, { status: 400 });
         }
+        const imageBuffer: ArrayBuffer = await imageFile.arrayBuffer();
+        // Perform analysis
+        const { detections, processed_image } = await detectorService.analysis(imageBuffer, confidence, nmsThreshold);
 
-        const { detections, processed_image } = await detectorService.analysis(imageUrl, confidence, nmsThreshold);
         const s3Url = await s3Util.upload(processed_image);
         const formattedData = Formatter.formatDetectionData(s3Url, detections);
+        console.log(detections)
         await prisma.imageDetection.createMany({ data: formattedData });
         return NextResponse.json(formattedData);
     } catch (error) {
@@ -29,6 +40,7 @@ export async function POST(req: Request) {
     }
 }
 
+// GET request handler for fetching detections
 export async function GET(req: Request) {
     const url = new URL(req.url);
     const startDate = url.searchParams.get("startDate");
@@ -62,7 +74,7 @@ export async function GET(req: Request) {
         return NextResponse.json({ detections });
     } catch (error) {
         console.error("Error fetching detections:", error);
-        return NextResponse.json({ message: "Failed to fetch detections", error: error });
+        return NextResponse.json({ message: "Failed to fetch detections", error: error }, { status: 500 });
     } finally {
         await prisma.$disconnect();
     }
