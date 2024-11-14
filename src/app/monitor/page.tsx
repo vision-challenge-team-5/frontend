@@ -66,7 +66,7 @@ export default function Monitor() {
               />
             ) : image ? (
               // 이미지 표시
-              <img
+              <Image
                 src={image}
                 alt="Uploaded"
                 className="w-full h-full object-cover"
@@ -115,7 +115,7 @@ export default function Monitor() {
           </div>
         </div>
         <div className="pt-24 pb-12">
-          <div className="inline text-2xl font-extrabold p-3 bg-white-green rounded flex justify-center">
+          <div className="text-2xl font-extrabold p-3 bg-white-green rounded flex justify-center">
             분석 결과
           </div>
           <div className="h-10"></div>

@@ -1,5 +1,4 @@
 import {
-  History,
   Home,
   Settings,
   ChartNoAxesCombined,
@@ -31,11 +30,6 @@ const items = [
     icon: ChartNoAxesCombined,
   },
   { title: "Monitor", url: "/monitor", icon: Cctv },
-  {
-    title: "History",
-    url: "/history",
-    icon: History,
-  },
   {
     title: "Settings",
     url: "/setting",
