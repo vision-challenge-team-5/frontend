@@ -2,6 +2,7 @@
 import Image from "next/image";
 // import Webcam from "react-webcam";
 // import ChooseFunc from './button'
+import AnalResult from './table';
 import { useRef, useState, useEffect, ChangeEvent } from 'react';
 
 export default function Monitor() {
@@ -91,8 +92,10 @@ export default function Monitor() {
                         
                     </div>
                 </div>
-                <div className="pt-12 ">
-                    {/* 테이블 */}
+                <div className="pt-24 pb-12">
+                    <div className="inline text-2xl font-extrabold p-3 bg-white-green rounded flex justify-center">분석 결과</div>
+                    <div className="h-10"></div>
+                    <AnalResult></AnalResult>
                 </div>
             </div>
         </div>
