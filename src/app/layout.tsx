@@ -30,12 +30,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <SidebarProvider>
-          <div className="relative min-h-screen">
+        <SidebarProvider className="block">
+          <div className="relative h-screen">
             <div className="fixed top-0 left-0 z-50">
               <AppSidebar />
             </div>
-            <main className="w-full min-h-screen">{children}</main>
+            <main className="">{children}</main>
           </div>
         </SidebarProvider>
       </body>
