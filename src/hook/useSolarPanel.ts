@@ -1,42 +1,37 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-interface Box {
-    x1: number;
-    x2: number;
-    y1: number;
-    y2: number;
-}
-interface SolarPanelDataResponse {
-    box: Box;
-    confidence: number;
-    label: string;
+interface SolarPanelDataProps {
+    startDate?: string; // Optional start date
+    endDate?: string; // Optional end date
 }
 
-export const useSolarPanel = () => {
-    const [data, setData] = useState<SolarPanelDataResponse[] | []>([]);
-    const [loading, setLoading] = useState<boolean>(true);
+export const useSolarPanel = ({ startDate, endDate }: SolarPanelDataProps = {}) => {
+    const [data, setData] = useState<Response[] | []>([]);
+    const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            setLoading(true);
-            try {
-                const response = await axios.get("/api/detect");
-                if (response.status != 200) {
-                    throw new Error("데이터를 가져오는 데 실패했습니다.");
-                }
-                const result = response.data;
-                setData(result);
-            } catch (err) {
-                setError((err as Error).message);
-            } finally {
-                setLoading(false);
+    const fetchAnalysisInfo = async () => {
+        setLoading(true);
+        try {
+            // Use passed dates or default to the full range
+            const queryParams = startDate && endDate ? `?startDate=${startDate}&endDate=${endDate}` : "";
+
+            const response = await axios.get(`/api/detect${queryParams}`);
+
+            if (response.status !== 200) {
+                throw new Error("데이터를 가져오는 데 실패했습니다.");
             }
-        };
 
-        fetchData();
-    }, []);
+            console.log(response.data);
+            const { detections } = response.data;
+            setData(detections);
+        } catch (err) {
+            setError((err as Error).message);
+        } finally {
+            setLoading(false);
+        }
+    };
 
-    return { data, loading, error };
+    return { data, loading, error, fetchAnalysisInfo };
 };
