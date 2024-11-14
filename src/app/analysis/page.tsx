@@ -95,7 +95,6 @@ const Analysis = () => {
                 <CarouselPrevious />
                 <CarouselNext />
               </Carousel>
-
               <BottomPreview
                 current={current}
                 data={data}
