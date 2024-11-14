@@ -11,12 +11,12 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
 
 // Menu items.
 const items = [
@@ -33,7 +33,7 @@ const items = [
   { title: "Monitor", url: "/monitor", icon: Cctv },
   {
     title: "History",
-    url: "#",
+    url: "/history",
     icon: History,
   },
   {
@@ -51,23 +51,22 @@ export function AppSidebar() {
     >
       <SidebarContent className="flex-1">
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                    <Link href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
-        <div className="">
+        <div>
           <SidebarTrigger className="size-10 pl-2 " />
         </div>
       </SidebarContent>
