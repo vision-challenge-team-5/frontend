@@ -4,19 +4,28 @@ import Image from "next/image";
 import Carousel from "./carousel";
 
 export default function Home() {
-    const lines = "Solar Panel\nContamination\nDetection System".split("\n");
+    const lines = ["Solar Panel", "Contamination", "Detection System"];
     const [displayedLines, setDisplayedLines] = useState<string[]>([]);
 
     useEffect(() => {
+        let mounted = true;
+        setDisplayedLines([]); // Reset lines
+
         const displayLines = async () => {
             for (let i = 0; i < lines.length; i++) {
-                setDisplayedLines((prev) => [...prev, lines[i]]);
-                await new Promise((resolve) => setTimeout(resolve, 400)); // 400ms 후에 다음 줄을 표시
+                if (!mounted) return;
+                await new Promise((resolve) => setTimeout(resolve, 400));
+                if (!mounted) return;
+                setDisplayedLines(prev => [...prev, lines[i]]);
             }
         };
 
-        displayLines(); // 줄을 순차적으로 표시
-    }, []); // 컴포넌트가 처음 렌더링될 때 한 번만 실행
+        displayLines();
+        
+        return () => {
+            mounted = false;
+        };
+    }, []);
 
     return (
         <div className="w-screen overflow-x-hidden">
@@ -27,7 +36,7 @@ export default function Home() {
                         {displayedLines.map((line, index) => (
                             <div key={index} className="opacity-9 animate-fadein">
                                 {line}
-                            </div> // 각 줄을 div로 감싸서 차례대로 표시
+                            </div>
                         ))}
                     </div>
                 </div>
