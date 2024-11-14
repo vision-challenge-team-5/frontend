@@ -11,15 +11,14 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.691.0",
     "@prisma/client": "^5.22.0",
-<<<<<<< HEAD
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-navigation-menu": "^1.2.1",
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.4",
     "aws-sdk": "^2.1692.0",
-=======
->>>>>>> f71f338d06d8ab24c30d21ddbcc94a6414659b61
+    "@tanstack/react-table": "^8.20.5",
+    "aws-sdk": "^2.1692.0",
     "axios": "^1.7.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -32,7 +31,8 @@
     "react-dom": "^19.0.0-rc-66855b96-20241106",
     "recharts": "^2.13.3",
     "tailwind-merge": "^2.5.4",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "swiper": "^11.1.14"
   },
   "devDependencies": {
     "@types/node": "^20",

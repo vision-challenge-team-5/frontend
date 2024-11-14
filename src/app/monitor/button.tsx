@@ -19,6 +19,7 @@ export default function ChooseFunc({ srcS, altS, widthS, heightS, classS1, class
         >
             <Image src={srcS} alt={altS} width={widthS} height={heightS} className={classS1}></Image>
             <div className={`flex items-center ${classS2}`}>{textS}</div>
+            
         </div>
     )
 }
