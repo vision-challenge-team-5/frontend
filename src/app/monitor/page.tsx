@@ -47,8 +47,8 @@ export default function Monitor() {
                 setImage(e.target?.result as string);   // 타입 명시
                 sendImage({
                   imageFile:file,
-                  confidence:"0.9",
-                  nmsThreshold:"0.3"
+                  confidence:"0.1",
+                  nmsThreshold:"0.7"
                 })
             }
         }
@@ -60,7 +60,7 @@ export default function Monitor() {
             <div className="pt-32"></div>
             <div className="pr-[15vw] pl-[15vw]">
                 <div className="flex justify-center relative">
-                    <div className="bg-black w-[850px] h-[550px]">
+                    <div className="bg-black w-[1200px] h-[800px]">
                         {isCameraOpen ? (
                             // 카메라 화면을 표시하는 요소
                             <video
