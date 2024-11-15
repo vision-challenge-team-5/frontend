@@ -31,6 +31,7 @@ export async function POST(req: NextRequest) {
 
         const s3Url = await s3Util.upload(processed_image);
         const formattedData = Formatter.formatDetectionData(s3Url, detections);
+        console.log(detections)
         await prisma.imageDetection.createMany({ data: formattedData });
         return NextResponse.json(formattedData);
     } catch (error) {

@@ -1,98 +1,100 @@
-"use client";
-import Image from "next/image";
-// import Webcam from "react-webcam";
-// import ChooseFunc from './button'
-import AnalResult from "./table";
-import { useRef, useState, useEffect, ChangeEvent } from "react";
-import { useSolarPanelAnalysis } from "@/hook/useSolarPanelAnalysis";
+'use client'
+
+import Image from "next/image"
+import AnalResult from './table'
+import { useRef, useState, useEffect, ChangeEvent } from 'react'
+import { useSolarPanelAnalysis } from "@/hook/useSolarPanelAnalysis"
+import { Camera, Upload } from 'lucide-react'
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 
 export default function Monitor() {
-    const videoRef = useRef<HTMLVideoElement | null>(null);
-    const [isCameraOpen, setIsCameraOpen] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null)
+  const [isCameraOpen, setIsCameraOpen] = useState(false)
+  const { sendImage } = useSolarPanelAnalysis()
+  const fileRef = useRef<HTMLInputElement | null>(null)
+  const [image, setImage] = useState('')
 
-    const fileRef = useRef<HTMLInputElement | null>(null);
-    const solarPanelAnalysis = useSolarPanelAnalysis();
-    const [image, setImage] = useState("");
 
-    // 카메라 열기 함수
-    const openCamera = async () => {
-        try {
-            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+  const openCamera = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true })
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream
+      }
+      setIsCameraOpen(true)
+    } catch (error) {
+      console.error('Camera access denied:', error)
+    }
+  }
 
-            if (videoRef.current) {
-                videoRef.current.srcObject = stream;
-            }
-            setIsCameraOpen(true);
-            // setImage('');    // 카메라를 열 때 업로드된 이미지를 초기화
-        } catch (error) {
-            console.error("Camera access denied:", error);
-        }
-    };
+  useEffect(() => {
+    if (videoRef.current && isCameraOpen) {
+      openCamera()
+    }
+  }, [isCameraOpen])
 
-    useEffect(() => {
-        if (videoRef.current && isCameraOpen) {
-            openCamera();
-        }
-    }, [isCameraOpen]);
+  const openFile = async (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
 
-    // 이미지/동영상 파일 열기 함수
-    const openFile = async (e: ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0]; // 받은 파일은 1개이기 때문에 index 0
-        if (!file) return;
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = (e: ProgressEvent<FileReader>) => {
+      if (reader.readyState === 2) {
+        setImage(e.target?.result as string)
+        sendImage({
+          imageFile: file,
+          confidence: "0.1",
+          nmsThreshold: "0.7"
+        })
+      }
+    }
+  }
 
-        // 이미지 화면에 띄우기
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = (e: ProgressEvent<FileReader>) => {
-            if (reader.readyState === 2) {
-                setImage(e.target?.result as string); // 타입 명시
-                solarPanelAnalysis.sendImage({
-                    imageFile: file,
-                    confidence: "0.9",
-                    nmsThreshold: "0.3",
-                });
-                // setIsCameraOpen(false);  // 파일을 열 때 카메라 닫기
-            }
-        };
-    };
 
-    return (
-        <div>
-            <div className="pt-32"></div>
-            <div className="pr-[15vw] pl-[15vw]">
-                <div className="flex justify-center relative">
-                    <div className="bg-black w-[850px] h-[550px]">
-                        {isCameraOpen ? (
-                            // 카메라 화면을 표시하는 요소
-                            <video ref={videoRef} autoPlay playsInline className="w-full h-full object-cover" style={{ display: isCameraOpen ? "block" : "none" }} />
-                        ) : image ? (
-                            // 이미지 표시
-                            <img src={image} alt="Uploaded" className="w-full h-full object-cover" />
-                        ) : (
-                            // 기본 화면
-                            <div className="flex justify-center items-center flex-col space-y-6 w-full h-full">
-                                <div className="flex justify-around bg-white-green w-[230px] h-[50px] rounded-2xl outline-double outline-4 outline-light-green" onClick={openCamera}>
-                                    <Image src="/camera.png" alt="카메라" width="35" height="10" className="pt-1.5 pb-1.5"></Image>
-                                    <div className="flex items-center pr-10">카메라 접근</div>
-                                </div>
-                                <div
-                                    className="flex justify-around bg-white-green w-[230px] h-[50px] rounded-2xl outline-double outline-4 outline-light-green"
-                                    onClick={() => fileRef.current?.click()} // input[type='file']이 hidden이기 때문에 부모 div에서 onClick() 해줘야함
-                                >
-                                    <Image src="/gallery.png" alt="갤러리" width="40" height="10" className="pt-1.5 pb-1.5"></Image>
-                                    <div className="flex items-center pr-3">사진/동영상 업로드</div>
-                                    <input type="file" name="image_URL" accept="image/*, video/*" ref={fileRef} onChange={openFile} className="hidden" />
-                                </div>
-                            </div>
-                        )}
-                    </div>
+  return (
+    <div className="container mx-auto px-4 py-8">
+        <Card className="overflow-hidden">
+          <CardContent className="p-0">
+            <div className="relative aspect-video bg-gray-100">
+              {isCameraOpen ? (
+                <video
+                  ref={videoRef}
+                  autoPlay
+                  playsInline
+                  className="w-full h-full object-cover"
+                />
+              ) : image ? (
+                <Image src={image} alt="Uploaded" layout="fill" objectFit="cover" />
+              ) : (
+                <div className="flex justify-center items-center h-full">
+                  <p className="text-gray-500">No media selected</p>
                 </div>
-                <div className="pt-24 pb-12">
-                    <div className="inline text-2xl font-extrabold p-3 bg-white-green rounded flex justify-center">분석 결과</div>
-                    <div className="h-10"></div>
-                    <AnalResult></AnalResult>
-                </div>
+              )}
             </div>
+          </CardContent>
+        </Card>
+        <div className="mt-6 flex justify-center space-x-4">
+          <Button variant="outline" onClick={openCamera}>
+            <Camera className="mr-2 h-4 w-4" />
+            Open Camera
+          </Button>
+          <Button variant="outline" onClick={() => fileRef.current?.click()}>
+            <Upload className="mr-2 h-4 w-4" />
+            Upload Media
+            <input
+              type="file"
+              name="image_URL"
+              accept="image/*, video/*"
+              ref={fileRef}
+              onChange={openFile}
+              className="hidden"
+            />
+          </Button>
         </div>
-    );
+          <h2 className="text-2xl font-bold mb-4">Analysis Results</h2>
+          <AnalResult />
+    </div>
+  )
 }
