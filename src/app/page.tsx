@@ -27,13 +27,24 @@ export default function Home() {
     }, [lines]);
 
     return (
-        <div className="h-screen w-screen overflow-x-hidden overflow-y-hidden">
-            <div className="relative w-full md:h96">
-                <Image src="/solar-panels.jpg" priority alt="태양광패널" width={2580} height={1402} sizes="100vw" />
-                <div className="absolute transform -translate-y-3/4 w-full h-[1500px] bg-[linear-gradient(to_bottom,_rgba(241,_255,_255,_0)_20%,_rgba(241,_255,_255,_1)_60%)]">
-                    <div className="text-blue-100 opacity-80 text-[6vw] leading-[1.1] font-sans font-black transform translate-x-[15vw]">
+        <div className="relative min-h-screen w-full overflow-hidden">
+            <div className="relative w-full h-screen">
+                <Image
+                    src="/solar-panels.jpg"
+                    priority
+                    alt="태양광패널"
+                    fill
+                    sizes="100vw"
+                    className="object-cover object-center"
+                    quality={100}
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(241,255,255,0.8)] to-[rgba(241,255,255,1)] z-10">
+                    <div className="container mx-auto px-4 mt-[15vh]">
                         {displayedLines.map((line, index) => (
-                            <div key={index} className="opacity-9 animate-fadein">
+                            <div
+                                key={index}
+                                className="text-blue-100 opacity-80 text-4xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fadein"
+                            >
                                 {line}
                             </div>
                         ))}
