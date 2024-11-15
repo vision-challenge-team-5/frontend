@@ -88,13 +88,15 @@ export default function Monitor() {
         setImage(e.target?.result as string);
         sendImage({
           imageFile: file,
-          confidence: "0.1",
-          nmsThreshold: "0.7",
+          confidence: "0.6",
+          nmsThreshold: "0.6",
         });
       }
     };
   };
-  const filteredData = data.filter(d => d.label !== "panel")[0];
+
+  const filteredData = Array.isArray(data) && data.length > 0 ?
+    data.find(d => d?.label !== "panel") || null : null;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-slate-50">
@@ -141,7 +143,7 @@ export default function Monitor() {
               {!loading ? (
                 <>
                   <h2 className="text-2xl font-bold text-slate-800 mb-6 text-center">분석 결과</h2>
-                  {data && <DataResponse analysisData={filteredData} />}
+                  {filteredData && <DataResponse analysisData={filteredData} />}
                 </>
               ) : (
                 <Loader2 className="h-8 w-8 animate-spin text-blue-500" />

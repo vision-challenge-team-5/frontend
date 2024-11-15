@@ -1,11 +1,11 @@
 import { Response } from "../api/detect/types";
 
 interface Props {
-    analysisData?: Response
+    analysisData: Response
 }
 
 const DataResponse = ({ analysisData }: Props) => {
-    if (!analysisData) return <p>분석된 결과가 없습니다.</p>
+    if (!analysisData) return <p className="text-2xl font-bold text-black">분석된 결과가 없습니다.</p>
 
     return (
         <div className="flex flex-col items-center">
