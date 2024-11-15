@@ -43,7 +43,7 @@ export default function Home() {
                     }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(241,255,255,0.8)] to-[rgba(241,255,255,1)]">
-                    <div className="relative container mx-auto px-6 pt-[20vh]">
+                    <div className="relative container mx-auto px-[12vw] pt-[20vh]">
                         {displayedLines.map((line, index) => (
                             <h1
                                 key={index}
