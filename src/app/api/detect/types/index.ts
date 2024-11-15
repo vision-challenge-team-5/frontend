@@ -5,6 +5,9 @@ export interface Detection {
 }
 
 export interface Response {
+    confidence?: number;
     detections: Detection[];
     processed_image: string;
+    imageUrl?:string
+    label?:string;
 }
