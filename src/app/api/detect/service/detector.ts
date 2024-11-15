@@ -28,4 +28,4 @@ class DetectorService {
         return formData;
     }
 }
-export default new DetectorService();
+export default DetectorService;

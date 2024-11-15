@@ -2,8 +2,8 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
-import s3Util from "../../utils/s3";
-import detectorService from "./service/detector";
+import S3Util from "../../utils/s3";
+import DetectorService from "./service/detector";
 import Formatter from "./service/formatter";
 
 export const config = {
@@ -27,9 +27,11 @@ export async function POST(req: NextRequest) {
         }
         const imageBuffer: ArrayBuffer = await imageFile.arrayBuffer();
         // Perform analysis
-        const { detections, processed_image } = await detectorService.analysis(imageBuffer, confidence, nmsThreshold);
-
-        const s3Url = await s3Util.upload(processed_image);
+        const detectService = new DetectorService();
+        const { detections, processed_image } = await detectService.analysis(imageBuffer, confidence, nmsThreshold);
+        
+        const s3util = new S3Util();
+        const s3Url = await s3util.upload(processed_image);
         const formattedData = Formatter.formatDetectionData(s3Url, detections);
         console.log(detections)
         await prisma.imageDetection.createMany({ data: formattedData });
@@ -63,9 +65,7 @@ export async function GET(req: Request) {
     }
 
     try {
-        const detections = await prisma.imageDetection.findMany({
-            where: filters,
-        });
+        const detections = await prisma.imageDetection.findMany();
 
         if (detections.length === 0) {
             return NextResponse.json({ message: "No detections found" });

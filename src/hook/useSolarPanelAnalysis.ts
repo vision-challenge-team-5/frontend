@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
 import { Response } from "../app/api/detect/types/index";
-import fs from "fs";
 
 interface SolarPanelDataProps {
     imageFile: File;

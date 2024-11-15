@@ -1,6 +1,6 @@
 "use server";
 import { NextResponse } from "next/server";
-import s3Util from "../../utils/s3"; // S3Util을 import
+import S3Util from "../../utils/s3"; // S3Util을 import
 
 /**
  * @description 이미지 S3 버킷에 업로드
@@ -14,8 +14,8 @@ export async function POST(req: Request) {
         if (!base64Img) {
             return NextResponse.json({ message: "No file provided" }, { status: 400 });
         }
-
-        const fileUrl = await s3Util.upload(base64Img);
+        const s3util = new S3Util();
+        const fileUrl = await s3util.upload(base64Img);
         return NextResponse.json({ message: "Image uploaded successfully", fileUrl });
     } catch (error) {
         console.error("파일 업로드 중 오류 발생:", error);
