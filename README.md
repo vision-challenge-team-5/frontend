@@ -2,10 +2,6 @@
 
 **SDGs #7 : Affordable and Clean Energy**
 
-이 혁신적인 시스템은 태양광 패널의 오염 상태와 균열을 실시간으로 감지하여 효율적인 유지보수와 관리가 가능하도록 도와줍니다. 사용자들은 이 시스템을 통해 태양광 패널의 상태를 모니터링하고, 오염이나 손상의 정도를 분석하여 에너지 생산 효율을 극대화할 수 있습니다. 이 시스템은 태양광 발전소의 유지비용을 절감하고, 전력 생산 최적화를 통해 지속 가능한 에너지 관리를 가능하게 합니다. 🔧✨
-
----
-
 ### 1. 기술 스택 
 
 ![Next.js](https://img.shields.io/badge/next%20js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)  ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)  ![TailwindCss](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white) ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)  ![AWS SDK](https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)
