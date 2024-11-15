@@ -34,7 +34,7 @@ export default function Setting() {
 
 
     return (
-        <div>
+        <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-slate-50">
             <div className="pt-32"></div>
             <div className="pr-[15vw] pl-[15vw]">
 
