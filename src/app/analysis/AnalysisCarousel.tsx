@@ -1,6 +1,3 @@
-// components/AnalysisCarousel.tsx
-"use client";
-
 import React, { useState } from "react";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
@@ -42,10 +39,9 @@ const AnalysisCarousel = ({ data }: AnalysisCarouselProps) => {
     setCurrent(index);
   };
 
-
   return (
-    <>
-      <Carousel setApi={setApi} className="w-full max-w-3xl">
+    <div className="flex flex-col items-center w-full">
+      <Carousel setApi={setApi} className="w-full">
         <CarouselContent>
           {data.map((item, index) => (
             <CarouselItem key={index}>
@@ -87,7 +83,7 @@ const AnalysisCarousel = ({ data }: AnalysisCarouselProps) => {
         data={data}
         onPreviewClick={handlePreviewClick}
       />
-    </>
+    </div>
   );
 };
 
