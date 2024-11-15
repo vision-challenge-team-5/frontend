@@ -47,7 +47,7 @@ export default function Home() {
                         {displayedLines.map((line, index) => (
                             <h1
                                 key={index}
-                                className="text-blue-100/80 text-4xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fadein"
+                                className="text-stone-900/80 text-4xl md:text-6xl lg:text-7xl font-bold my-3 animate-fadein"
                             >
                                 {line}
                             </h1>
