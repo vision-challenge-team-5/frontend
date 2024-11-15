@@ -60,7 +60,7 @@ const AnalysisCarousel = ({ data }: AnalysisCarouselProps) => {
                   <div className="flex items-center justify-between">
                     <div>
                       <Badge className="mb-2 bg-blue-100 text-blue-800">
-                        분석 결과
+                        히스토리
                       </Badge>
                       <h2 className="text-2xl font-bold text-gray-800">
                         {item.label.toUpperCase()}

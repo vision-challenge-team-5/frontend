@@ -1,7 +1,7 @@
 import {
   Home,
   Settings,
-  ChartNoAxesCombined,
+  HistoryIcon,
   Cctv,
 } from "lucide-react";
 
@@ -25,9 +25,9 @@ const items = [
     icon: Home,
   },
   {
-    title: "Analysis",
-    url: "/analysis",
-    icon: ChartNoAxesCombined,
+    title: "History",
+    url: "/history",
+    icon: HistoryIcon,
   },
   { title: "Monitor", url: "/monitor", icon: Cctv },
   {

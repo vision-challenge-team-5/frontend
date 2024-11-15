@@ -17,11 +17,10 @@ const Analysis = () => {
         <div className="flex flex-col items-center">
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-4">
-              태양광 패널 손상 분석
+              분석 히스토리
             </h1>
             <p className="text-slate-600 max-w-2xl mx-auto">
-              AI가 태양광 패널의 손상을 자동으로 감지하고 분석합니다.<br />
-              높은 정확도로 크랙, 핫스팟 등 다양한 유형의 손상을 식별합니다.
+              이전에 식별한 패널들을 볼 수 있습니다.<br />
             </p>
           </div>
 
@@ -36,12 +35,12 @@ const Analysis = () => {
                   )}
                 </div>
                 <h2 className="text-xl font-semibold mb-4">
-                  {loading ? "분석 중입니다..." : "분석을 시작하시겠습니까?"}
+                  {loading ? "불러오는 중입니다..." : "히스토리를 불러오시겠습니까?"}
                 </h2>
                 <p className="text-slate-500 mb-6">
                   {loading ?
                     "잠시만 기다려주세요" :
-                    "버튼을 클릭하시면 AI가 태양광 패널의\n손상 여부를 자동으로 분석합니다."
+                    "버튼을 클릭하시면 히스토리를 자동으로 불러옵니다."
                   }
                 </p>
                 {!loading && (
@@ -49,7 +48,7 @@ const Analysis = () => {
                     onClick={fetchAnalysisInfo}
                     className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-lg px-8 py-6 rounded-xl shadow-md hover:shadow-lg transition-all"
                   >
-                    분석 시작하기
+                    불러오기
                   </Button>
                 )}
               </div>
@@ -59,7 +58,7 @@ const Analysis = () => {
               <div className="bg-white/50 backdrop-blur-sm rounded-3xl p-8 shadow-lg mb-12">
                 <div className="flex flex-col items-center mb-6">
                   <h2 className="text-2xl font-bold text-slate-800 mb-2">분석 결과</h2>
-                  <p className="text-slate-500 mb-4">총 {data.length}개의 손상이 감지되었습니다</p>
+                  <p className="text-slate-500 mb-4">총 {data.length}개의 히스토리가 있습니다.</p>
                   <Button
                     onClick={fetchAnalysisInfo}
                     variant="outline"
@@ -69,10 +68,10 @@ const Analysis = () => {
                     {loading ? (
                       <div className="flex items-center">
                         <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                        분석 중...
+                        불러오는 중...
                       </div>
                     ) : (
-                      "다시 분석하기"
+                      "다시 불러오기"
                     )}
                   </Button>
                 </div>
