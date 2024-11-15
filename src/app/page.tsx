@@ -28,11 +28,11 @@ export default function Home() {
     },[lines]);
 
     return (
-        <div className="w-screen overflow-x-hidden">
+        <div className="h-screen w-screen overflow-x-hidden">
             <div className="relative w-full md:h96">
-                <Image src="/solar-panels.png" priority alt="태양광패널" width={2580} height={1402} sizes="100vw" />
-                <div className="absolute transform -translate-y-3/4 w-full h-[500px] bg-[linear-gradient(to_bottom,_rgba(80,_98,_58,_0)_20%,_rgba(80,_98,_58,_1)_60%)]">
-                    <div className="text-white-green text-[6vw] leading-[1.1] font-sans font-black transform translate-x-[15vw]">
+                <Image src="/solar-panels.jpg" priority alt="태양광패널" width={2580} height={1402} sizes="100vw" />
+                <div className="absolute transform -translate-y-3/4 w-full h-[1000px] bg-[linear-gradient(to_bottom,_rgba(241,_255,_255,_0)_20%,_rgba(241,_255,_255,_1)_60%)]">
+                    <div className="text-blue-100 opacity-80 text-[6vw] leading-[1.1] font-sans font-black transform translate-x-[15vw]">
                         {displayedLines.map((line, index) => (
                             <div key={index} className="opacity-9 animate-fadein">
                                 {line}
@@ -42,13 +42,13 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="bg-olive-green h-[2000px]">
+            {/* <div className="bg-gradient-to-r from-rgba(241,_255,_255,_0) to-cyan-100 h-[2000px]">
                 <div className="relative pt-[360px]"></div>
                 <div className="relative pb-[50px] text-white-green text-7xl font-extrabold text-center">solAR cleAR란?</div>
                 <div className="relative">
                     <Carousel />
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }

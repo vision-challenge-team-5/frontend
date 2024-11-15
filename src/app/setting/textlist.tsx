@@ -16,7 +16,7 @@ export default function textlist({ titleS, valueS, placeholderS, onChange }: Tex
         <div className="m-8">
             <div className="inline-block font-bold mb-2 text-sm w-[90px] text-right">{titleS}</div>
             <input 
-                className="inline w-[250px] border-gray border-b-2 items-center text-sm focus:bg-white-green focus:outline-none ml-5 pl-2 pt-0.5 pb-0.5"
+                className="inline w-[250px] border-gray border-b-2 items-center text-sm focus:bg-gradient-to-r from-blue-100 to-cyan-100 focus:outline-none ml-5 pl-2 pt-0.5 pb-0.5"
                 type="text" 
                 value={valueS} 
                 placeholder={placeholderS} 
