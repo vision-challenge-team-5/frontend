@@ -34,7 +34,7 @@ export default function Setting() {
 
 
     return (
-        <div>
+        <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-slate-50">
             <div className="pt-32"></div>
             <div className="pr-[15vw] pl-[15vw]">
 
@@ -76,7 +76,7 @@ export default function Setting() {
                 </div>
                 <div className="flex justify-center mt-8">
                     <button 
-                    className="bg-white-green right p-2 pl-4 pr-4 text-lg font-bold rounded-md"
+                    className="bg-gradient-to-r from-blue-400 to-blue-600 right p-2 pl-4 pr-4 text-white text-lg font-bold rounded-md"
                     onClick={handleSave}>저장</button>
                 </div>
                 

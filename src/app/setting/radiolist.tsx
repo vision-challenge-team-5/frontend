@@ -14,7 +14,7 @@ export default function radiolist({ titleS, valueS, onChange }: RadioListProps )
     return (
         <div className="m-8">
             <div className="inline-block font-bold mb-2 text-sm w-[90px] text-right">{titleS}</div>
-            <label className="ml-7 accent-light-green">
+            <label className="ml-7 accent-blue-500">
                 <input 
                     type="radio" 
                     name={titleS}
@@ -24,7 +24,7 @@ export default function radiolist({ titleS, valueS, onChange }: RadioListProps )
                 />
                 예
             </label>
-            <label className="accent-light-green">
+            <label className="accent-blue-500">
                 <input 
                     type="radio" 
                     name={titleS}

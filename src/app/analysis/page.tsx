@@ -20,7 +20,7 @@ const Analysis = () => {
               태양광 패널 손상 분석
             </h1>
             <p className="text-slate-600 max-w-2xl mx-auto">
-              AI가 태양광 패널의 손상을 자동으로 감지하고 분석합니다. 
+              AI가 태양광 패널의 손상을 자동으로 감지하고 분석합니다.<br/>
               높은 정확도로 크랙, 핫스팟 등 다양한 유형의 손상을 식별합니다.
             </p>
           </div>
@@ -33,7 +33,7 @@ const Analysis = () => {
                 </div>
                 <h2 className="text-xl font-semibold mb-4">분석을 시작하시겠습니까?</h2>
                 <p className="text-slate-500 mb-6">
-                  버튼을 클릭하시면 AI가 태양광 패널의 손상 여부를 자동으로 분석합니다.
+                  버튼을 클릭하시면 AI가 태양광 패널의<br/>손상 여부를 자동으로 분석합니다.
                 </p>
                 <Button
                   onClick={fetchAnalysisInfo}
