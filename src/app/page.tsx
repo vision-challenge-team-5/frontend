@@ -42,12 +42,21 @@ export default function Home() {
                         height: '100%'
                     }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(241,255,255,0.8)] to-[rgba(241,255,255,1)]">
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(0,0,0,0.4)] to-[rgba(0,0,0,0.6)]">
                     <div className="relative container mx-auto px-[12vw] pt-[20vh]">
                         {displayedLines.map((line, index) => (
                             <h1
                                 key={index}
-                                className="text-stone-900/80 text-4xl md:text-6xl lg:text-7xl font-bold my-3 animate-fadein"
+                                className="text-white text-4xl md:text-6xl lg:text-7xl font-bold my-3 animate-fadein tracking-wide"
+                                style={{
+                                    textShadow: `
+                                        2px 2px 0 rgba(0,0,0,0.2),
+                                        -2px -2px 0 rgba(0,0,0,0.2),
+                                        2px -2px 0 rgba(0,0,0,0.2),
+                                        -2px 2px 0 rgba(0,0,0,0.2),
+                                        0 2px 8px rgba(0,0,0,0.4)
+                                    `
+                                }}
                             >
                                 {line}
                             </h1>
