@@ -27,30 +27,34 @@ export default function Home() {
     }, [lines]);
 
     return (
-        <div className="relative min-h-screen w-full overflow-hidden">
-            <div className="relative w-full h-screen">
+        <main className="relative h-screen w-full overflow-hidden">
+            <div className="absolute inset-0">
                 <Image
                     src="/solar-panels.jpg"
                     priority
                     alt="태양광패널"
                     fill
                     sizes="100vw"
-                    className="object-cover object-center"
-                    quality={100}
+                    className="object-cover"
+                    style={{
+                        objectPosition: 'center',
+                        width: '100%',
+                        height: '100%'
+                    }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(241,255,255,0.8)] to-[rgba(241,255,255,1)] z-10">
-                    <div className="container mx-auto px-4 mt-[15vh]">
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(241,255,255,0.8)] to-[rgba(241,255,255,1)]">
+                    <div className="relative container mx-auto px-6 pt-[20vh]">
                         {displayedLines.map((line, index) => (
-                            <div
+                            <h1
                                 key={index}
-                                className="text-blue-100 opacity-80 text-4xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fadein"
+                                className="text-blue-100/80 text-4xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fadein"
                             >
                                 {line}
-                            </div>
+                            </h1>
                         ))}
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     );
 }
