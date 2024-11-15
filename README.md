@@ -8,10 +8,10 @@
 ---
 ### 2. UI
 #### 2-1. 모니터링 및 이미지 분석 페이지
-<img width="200px" src="https://github.com/user-attachments/assets/3aa3f7d4-8241-481c-9fa3-5a5b89642168"/>
+<img width="400px" src="https://github.com/user-attachments/assets/3aa3f7d4-8241-481c-9fa3-5a5b89642168"/>
 
 #### 2-2. 분석 결과 확인 페이지
-<img width="200px" src="https://github.com/user-attachments/assets/6dfa3dd5-ac43-4bde-9ae0-c5403ac8a1bc"/>
+<img width="400px" src="https://github.com/user-attachments/assets/6dfa3dd5-ac43-4bde-9ae0-c5403ac8a1bc"/>
 
 
 ---
