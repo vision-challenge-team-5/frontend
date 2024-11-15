@@ -1,10 +1,9 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
-import Carousel from "./carousel";
 
 export default function Home() {
-    const lines =useMemo(()=>["Solar Panel", "Contamination", "Detection System"],[]);
+    const lines = useMemo(() => ["Solar Panel", "Contamination", "Detection System"], []);
     const [displayedLines, setDisplayedLines] = useState<string[]>([]);
 
     useEffect(() => {
@@ -21,11 +20,11 @@ export default function Home() {
         };
 
         displayLines();
-        
+
         return () => {
             mounted = false;
         };
-    },[lines]);
+    }, [lines]);
 
     return (
         <div className="h-screen w-screen overflow-x-hidden overflow-y-hidden">
