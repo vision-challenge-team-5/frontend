@@ -34,4 +34,4 @@ class S3Util {
     }
 }
 
-export default new S3Util();
+export default S3Util;
